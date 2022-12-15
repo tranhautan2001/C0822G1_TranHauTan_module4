@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("")
-public class TranslateController {
+public class DictionaryController {
     @RequestMapping("")
     public String loadIndex() {
         return "index";
