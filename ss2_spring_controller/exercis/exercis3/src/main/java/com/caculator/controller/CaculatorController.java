@@ -15,12 +15,12 @@ public class CaculatorController {
     private ICaculatorService iCaculatorService;
 
     @GetMapping("")
-    private String caculator(){
+    private String caculate(){
         return "caculator/index";
     }
     @GetMapping("/caculator")
     private String caculator(@RequestParam("first-number") double fristNumber , char calculations, @RequestParam("second-number") double secondNumber , Model model){
-        double result = iCaculatorService.caculator(fristNumber, calculations, secondNumber);
+        double result = iCaculatorService.caculate(fristNumber, calculations, secondNumber);
         model.addAttribute("result",result);
         return "caculator/index";
     }

@@ -8,7 +8,7 @@ public class CaculatorService implements ICaculatorService {
 
 
     @Override
-    public double caculator(double firstNumber, char operator, double secondNumber) {
+    public double caculate(double firstNumber, char operator, double secondNumber) {
         double result = 0;
         switch (operator){
             case '+':
