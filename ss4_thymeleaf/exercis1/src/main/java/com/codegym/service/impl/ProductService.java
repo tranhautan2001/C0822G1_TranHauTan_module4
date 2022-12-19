@@ -4,9 +4,11 @@ import com.codegym.model.Product;
 import com.codegym.repository.IProductRepository;
 import com.codegym.repository.impl.ProductRepository;
 import com.codegym.service.IProductService;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ProductService implements IProductService {
     private IProductRepository iProductRepository = new ProductRepository();
     @Override
@@ -32,5 +34,10 @@ public class ProductService implements IProductService {
     @Override
     public void remove(int id) {
         iProductRepository.remove(id);
+    }
+
+    @Override
+    public List<Product> findByName(String name) {
+        return iProductRepository.findByName(name);
     }
 }

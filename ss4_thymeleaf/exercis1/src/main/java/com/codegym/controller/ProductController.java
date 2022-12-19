@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/product")
 public class ProductController {
-    private final IProductService iProductService = new ProductService();
+    private  IProductService iProductService = new ProductService();
 
     @GetMapping("")
     public String index(Model model){
@@ -29,7 +29,7 @@ public class ProductController {
     }
 
     @PostMapping("save")
-    public String create(@ModelAttribute(name = "productList") Product product){
+    public String create(@ModelAttribute Product product){
         iProductService.save(product);
         return "redirect:/product";
     }
@@ -46,7 +46,6 @@ public class ProductController {
         iProductService.remove(product.getId());
         redirectAttributes.addFlashAttribute("success","removed product successfully?");
         return "redirect:/product";
-
     }
 
 /*
@@ -70,4 +69,9 @@ public class ProductController {
         return "redirect:/product";
     }
 
+    @GetMapping("/search")
+    public String search(@RequestParam(value = "name",defaultValue = "") String name ,Model model) {
+        model.addAttribute("products",iProductService.findByName(name));
+        return "/list";
+    }
 }

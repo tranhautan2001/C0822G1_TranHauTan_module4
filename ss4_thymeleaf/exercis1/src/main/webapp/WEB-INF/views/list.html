@@ -12,7 +12,11 @@
 <p>
     <a th:href="@{product/create}">Add new Product</a>
 </p>
-<table class="table table-dark table-striped" id="customers" >
+<form class="d-flex" th:action="@{/product/search}" method="get" >
+    <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<table class="table table-dark table-striped"  >
     <thead>
     <tr>
         <th>STT</th>
