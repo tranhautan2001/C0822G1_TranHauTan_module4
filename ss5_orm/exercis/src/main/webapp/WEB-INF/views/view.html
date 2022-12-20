@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>View Customer</h3>
+<p>
+    <a th:href="@{/product}">
+        Back to Product list
+    </a>
+</p>
+<div id="detail">
+    <div class="cusdetail">
+        <label>Name:</label>
+        <label th:text="${productView.name}"></label>
+    </div>
+    <div class="cusdetail">
+        <label>PRICE:</label>
+        <label th:text="${productView.price}"></label>
+    </div>
+    <div class="cusdetail">
+        <label>DESCRIBE:</label>
+        <label th:text="${productView.describe1}"></label>
+    </div>
+    <div class="cusdetail">
+        <label>PRODUCER:</label>
+        <label th:text="${productView.producer}"></label>
+    </div>
+</div>
+</body>
+</html>
