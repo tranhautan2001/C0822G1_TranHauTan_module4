@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>Add blog</h3>
+<p>
+  <a th:href="@{/blog}">
+    Back to Blog list
+  </a>
+</p>
+
+<div >
+  <div class="cusdetail" th:object="${blogView}">
+    <label>title:</label>
+    <label th:text="${blogView.getTitle()}"></label>
+<!--  <div class="cusdetail">-->
+<!--    <label>writer:</label>-->
+<!--    <label th:text="${blogView.writer}"></label>-->
+<!--  </div>-->
+<!--  <div class="cusdetail">-->
+<!--    <label>content:</label>-->
+<!--    <label th:text="${blogView.content}"></label>-->
+  </div>
+</div>
+</body>
+</html>
