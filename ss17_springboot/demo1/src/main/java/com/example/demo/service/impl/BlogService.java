@@ -16,9 +16,11 @@ public class BlogService implements IBlogService {
 
     @Autowired
     IBlogRepository iBlogRepository;
+
+
     @Override
-    public List<Blog> findAll() {
-        return iBlogRepository.findAll();
+    public List<Blog> searchTitle(String title) {
+        return iBlogRepository.searchTitle(title);
     }
 
     @Override
@@ -42,8 +44,4 @@ public class BlogService implements IBlogService {
         iBlogRepository.deleteById(id);
     }
 
-    @Override
-    public List<Blog> findByName(String name) {
-        return null;
-    }
 }

@@ -3,10 +3,9 @@ package com.example.demo.service;
 import com.example.demo.model.Blog;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IBlogService {
-    List<Blog> findAll();
+    List<Blog> searchTitle(String title);
 
     void save(Blog blog);
 
@@ -16,5 +15,5 @@ public interface IBlogService {
 
     void delete(int id);
 
-    List<Blog> findByName(String name);
+
 }

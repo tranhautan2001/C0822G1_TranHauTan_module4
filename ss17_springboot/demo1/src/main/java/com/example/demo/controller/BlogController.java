@@ -18,10 +18,12 @@ public class BlogController {
     IBlogService iBlogService;
 
     @GetMapping("")
-    public String index(Model model){
-        List<Blog> blogList = iBlogService.findAll();
+    public String index(Model model, @RequestParam(name ="title",defaultValue = "")String title){
+        List<Blog> blogList = iBlogService.searchTitle(title);
         model.addAttribute("blogList",blogList);
+        model.addAttribute("title",title);
         return "views/list";
+
     }
     @GetMapping("/create")
     public String showCreate (Model model){
@@ -63,4 +65,5 @@ public class BlogController {
         model.addAttribute("blogView",iBlogService.findById(id));
         return "views/display";
     }
+
 }
