@@ -12,14 +12,23 @@
   <div class="cusdetail" th:object="${blogView}">
     <label>title:</label>
     <label th:text="${blogView.getTitle()}"></label>
-<!--  <div class="cusdetail">-->
-<!--    <label>writer:</label>-->
-<!--    <label th:text="${blogView.writer}"></label>-->
-<!--  </div>-->
-<!--  <div class="cusdetail">-->
-<!--    <label>content:</label>-->
-<!--    <label th:text="${blogView.content}"></label>-->
+  <div class="cusdetail">
+    <label>writer:</label>
+    <label th:text="${blogView.writer}"></label>
   </div>
+  <div class="cusdetail">
+    <label>content:</label>
+    <label th:text="${blogView.content}"></label>
+  </div>
+    <div class="cusdetail">
+      <label>writingTime:</label>
+      <label th:text="${blogView.writingTime}"></label>
+    </div>
+    <div class="cusdetail">
+      <label>category:</label>
+      <label th:text="${blogView.category.name}"></label>
+    </div>
+</div>
 </div>
 </body>
 </html>

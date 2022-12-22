@@ -15,7 +15,7 @@ public class BlogService implements IBlogService {
 
 
     @Autowired
-    IBlogRepository iBlogRepository;
+    private IBlogRepository iBlogRepository;
 
 
     @Override

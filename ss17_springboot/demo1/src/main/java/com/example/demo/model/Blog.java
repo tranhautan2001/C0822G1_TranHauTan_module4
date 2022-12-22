@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 
@@ -14,6 +11,10 @@ public class Blog {
     private String title;
     private String writer;
     private String content;
+    private String writingTime;
+
+    @ManyToOne
+    private Category category;
 
     public Blog() {
     }
@@ -48,5 +49,21 @@ public class Blog {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getWritingTime() {
+        return writingTime;
+    }
+
+    public void setWritingTime(String writingTime) {
+        this.writingTime = writingTime;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

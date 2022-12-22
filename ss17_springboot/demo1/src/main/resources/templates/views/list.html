@@ -23,6 +23,8 @@
         <th>Title</th>
         <th>Writer</th>
         <th>Content</th>
+        <th>WritingTime</th>
+        <th>Category</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>View</th>
@@ -35,6 +37,8 @@
         <td th:text="${blog.getTitle()}" ></td>
         <td th:text="${blog.getWriter()}" ></td>
         <td th:text="${blog.getContent()}" ></td>
+        <td th:text="${blog.getWritingTime()}" ></td>
+        <td th:text="${blog.getCategory().name}" ></td>
         <td><a th:href="@{/blog/{id}/edit(id=${blog.getId()})}">EDIT </a></td>
         <td><a th:href="@{/blog/{id}/delete(id=${blog.getId()})}">DELETE </a></td>
         <td><a th:href="@{/blog/{id}/display(id=${blog.getId()})}">VIEW </a></td>

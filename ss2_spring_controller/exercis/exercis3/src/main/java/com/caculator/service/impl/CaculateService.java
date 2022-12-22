@@ -1,10 +1,9 @@
 package com.caculator.service.impl;
 
-import com.caculator.service.ICaculatorService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CaculatorService implements ICaculatorService {
+public class CaculateService implements com.caculator.service.CaculateService {
 
 
     @Override
