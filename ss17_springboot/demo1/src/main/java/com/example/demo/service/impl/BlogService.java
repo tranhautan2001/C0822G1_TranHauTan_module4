@@ -5,10 +5,13 @@ import com.example.demo.model.Blog;
 import com.example.demo.repository.IBlogRepository;
 import com.example.demo.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.sql.SQLDataException;
+
 
 @Service
 public class BlogService implements IBlogService {
@@ -19,13 +22,21 @@ public class BlogService implements IBlogService {
 
 
     @Override
-    public List<Blog> searchTitle(String title) {
-        return iBlogRepository.searchTitle(title);
+    public Page<Blog> searchTitle(String title, Pageable pageable) {
+        return iBlogRepository.searchTitle(title,pageable);
     }
 
     @Override
-    public void save(Blog blog) {
-        iBlogRepository.save(blog);
+    public boolean save(Blog blog) {
+        try {
+            if (iBlogRepository.findByTitle(blog.getTitle() != null )) {
+                throw new SQLDataException();
+            }
+            iBlogRepository.save(blog);
+        } catch (IllegalArgumentException | OptimisticLockingFailureException | SQLDataException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -35,13 +46,22 @@ public class BlogService implements IBlogService {
 
 
     @Override
-    public void update(Blog blog) {
-         iBlogRepository.save(blog);
+    public Boolean update(Blog blog) {
+        if (!iBlogRepository.existsById(blog.getId())) {
+            return false;
+        }
+        try {
+            iBlogRepository.save(blog);
+        } catch (IllegalArgumentException | OptimisticLockingFailureException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public void delete(int id) {
         iBlogRepository.deleteById(id);
     }
+
 
 }

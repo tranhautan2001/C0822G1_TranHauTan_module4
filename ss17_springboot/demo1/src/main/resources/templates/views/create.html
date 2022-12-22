@@ -28,8 +28,13 @@
       <input type="text" th:field="*{writingTime}"/>
     </div>
     <div>
-      <label>category</label>
-      <input type="text" th:field="*{getCategory()}"/>
+      <!--  <label>category</label>
+        <input type="text" th:field="*{category.name}"/>-->
+      <select th:field="*{category}" class="select">
+        <option th:each="items:${cateroryList}" th:text="${items.name}"
+                th:value="${items.id}">
+        </option>
+      </select>
     </div>
 
     <input type="submit" value="Save"/>

@@ -33,7 +33,7 @@
     </thead>
     <tbody>
     <tr th:each="blog,rowStart : ${blogList}">
-        <td th:text="${rowStart.count}" ></td>
+        <td th:text="${rowStart.count + blogList.number * blogList.size}" ></td>
         <td th:text="${blog.getTitle()}" ></td>
         <td th:text="${blog.getWriter()}" ></td>
         <td th:text="${blog.getContent()}" ></td>
@@ -46,5 +46,43 @@
     </tr>
     </tbody>
 </table>
+<!--phân trang-->
+<div>
+    <nav aria-label="..." class="justify-content-center d-flex">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogList.number - 1})}"
+                   th:if="${blogList.hasPrevious()}">&laquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${blogList.hasPrevious()}">
+                <a class="page-link">&laquo;</a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogList.number - 1})}"
+                   th:if="${blogList.hasPrevious()}" th:text="${blogList.number}"></a>
+            </li>
+
+            <li class="page-item active">
+                <a class="page-link" th:href="@{/blog/(page=${blogList.number})}"
+                   th:text="${blogList.number + 1}">
+                    <span class="sr-only">(trang hiện tại)</span></a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogList.number+1})}" th:text="${blogList.number+2}"
+                   th:if="${blogList.hasNext()}"></a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/blog/(page=${blogList.number+1})}"
+                   th:if="${blogList.hasNext()}">&raquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${blogList.hasNext()}">
+                <a class="page-link">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
+</div>
 </body>
 </html>
