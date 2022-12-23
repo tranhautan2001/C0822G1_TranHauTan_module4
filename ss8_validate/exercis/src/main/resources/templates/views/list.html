@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<p>
+    <a th:href="@{user/create}">Add new Product</a>
+</p>
+<form class="d-flex"  >
+    <input class="form-control me-2" name="title" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+<table class="table table-dark table-striped"  >
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>phoneNumber</th>
+        <th>age</th>
+        <th>email</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user,rowStart : ${userList}">
+        <td th:text="${rowStart.count}" ></td>
+        <td th:text="${user.name}" ></td>
+        <td th:text="${user.getPhoneNumber()}" ></td>
+        <td th:text="${user.getAge()}" ></td>
+        <td th:text="${user.getEmail()}" ></td>
+
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

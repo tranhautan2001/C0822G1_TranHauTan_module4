@@ -3,7 +3,6 @@ package com.example.demo.model;
 import javax.persistence.*;
 
 @Entity
-
 public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

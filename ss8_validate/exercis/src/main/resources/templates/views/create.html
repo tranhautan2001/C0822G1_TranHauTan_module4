@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>Add blog</h3>
+<p>
+    <a th:href="@{/user}">
+        Back to Blog list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/user/save}" th:object="${userDto}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <label>name</label>
+            <input type="text" th:field="*{name}"/>
+            <p th:errors="*{name}" class="text-danger" ></p>
+        </div>
+        <div>
+            <label>phoneNumber</label>
+            <input type="email" th:field="*{phoneNumber}"/>
+            <p th:errors="*{phoneNumber}" class="text-danger" ></p>
+
+        </div>
+        <div>
+            <label>age</label>
+            <input type="text" th:field="*{age}"/>
+            <p th:errors="*{age}" class="text-danger" ></p>
+
+        </div>
+        <div>
+            <label>email</label>
+            <input type="text" th:field="*{email}"/>
+            <p th:errors="*{email}" class="text-danger" ></p>
+
+        </div>
+
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+</body>
+</html>
