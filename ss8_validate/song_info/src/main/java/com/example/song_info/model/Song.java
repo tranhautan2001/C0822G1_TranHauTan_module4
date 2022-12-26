@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Song {
+public class Song<String> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

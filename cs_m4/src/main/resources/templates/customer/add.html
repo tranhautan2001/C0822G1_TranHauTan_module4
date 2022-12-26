@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h3>Add blog</h3>
+<p>
+    <a th:href="@{/customer}">
+        Back to Blog list
+    </a>
+</p>
+<div id="form">
+    <form th:action="@{/customer/save}" th:object="${customerList}"
+          method="POST" novalidate="novalidate">
+        <input type="hidden" th:field="*{id}"/>
+        <div>
+            <select th:field="*{customerType}">
+                <option th:each="ct : ${customerTypes}" th:value="${ct.id}" th:text="${ct.name}"></option>
+            </select>
+        </div>
+        <div>
+            <label>name</label>
+            <input type="email" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>dateOfBirth</label>
+            <input type="text" th:field="*{dateOfBirth}"/>
+        </div>
+        <div>
+            <label>gender</label>
+            <input type="radio" th:value="0" th:field="*{gender}"/>Nu
+            <input type="radio" th:value="1" th:field="*{gender}"/>Nam
+        </div>
+        <div>
+            <label>idCard</label>
+            <input type="text" th:field="*{idCard}"/>
+        </div>
+        <div>
+            <label>phoneNumber</label>
+            <input type="text" th:field="*{phoneNumber}"/>
+        </div>
+        <div>
+            <label>email</label>
+            <input type="text" th:field="*{email}"/>
+        </div>
+        <div>
+            <label>address</label>
+            <input type="text" th:field="*{address}"/>
+        </div>
+
+
+        <input type="submit" value="Save"/>
+    </form>
+</div>
+</body>
+</html>
