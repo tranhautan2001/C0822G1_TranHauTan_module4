@@ -9,12 +9,10 @@
 </head>
 <body>
 <h3> Book </h3>
-<p>
-    <a th:href="@{blog/create}">Add new Book</a>
-</p>
+
 <form class="d-flex"  >
     <input class="form-control me-2" name="name" type="search" placeholder="Search" aria-label="Search">
-
+    <button type="submit" value="save" >search</button>
 </form>
 <table class="table table-dark table-striped"  >
     <thead>
@@ -34,9 +32,12 @@
         <td th:text="${blog.name}" ></td>
         <td th:text="${blog.author}" ></td>
         <td th:text="${blog.amount}" ></td>
-
+        <td ><a th:href="@{/{id}-view(id=${blog.id})}">view</a></td>
     </tr>
     </tbody>
 </table>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>

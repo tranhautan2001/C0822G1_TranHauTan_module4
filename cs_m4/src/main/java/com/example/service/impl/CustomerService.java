@@ -4,11 +4,10 @@ import com.example.model.customer.Customer;
 import com.example.repository.ICustomerRepository;
 import com.example.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class CustomerService implements ICustomerService {
@@ -21,8 +20,14 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public Customer save(Customer customer) {
-        return customerRepository.save(customer);
+    public boolean save(Customer customer) {
+        try {
+            customerRepository.save(customer);
+        } catch (
+                IllegalArgumentException | OptimisticLockingFailureException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -31,8 +36,15 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void update(Customer customer) {
-        customerRepository.save(customer);
+    public boolean update(Customer customer) {
+        try {
+            customerRepository.save(customer);
+        } catch (
+                IllegalArgumentException | OptimisticLockingFailureException e) {
+            return false;
+        }
+        return true;
+
     }
 
     @Override
