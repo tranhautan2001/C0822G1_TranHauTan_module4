@@ -5,12 +5,11 @@ import com.example.model.customer.CustomerType;
 import com.example.service.ICustomerService;
 import com.example.service.ICustomerTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +23,16 @@ public class CustomerController {
     private ICustomerTypeService customerTypeService;
 
     @GetMapping("")
-    public String showList(Model model){
-        model.addAttribute("customerList",customerService.finAll());
+    public String showList(Model model,@PageableDefault(value = 5) Pageable pageable){
+        model.addAttribute("customer", new Customer());
+        model.addAttribute("customerList",customerService.finAll(pageable));
+        model.addAttribute("customerTypeList",customerTypeService.findAll());
+        return "customer/list";
+    }
+
+    @GetMapping("/search")
+    public String search(String name, String email, String type, Model model, @PageableDefault(value = 5)Pageable pageable) {
+        model.addAttribute("customerList",customerService.search(name,email,type,pageable));
         model.addAttribute("customerTypeList",customerTypeService.findAll());
         return "customer/list";
     }
@@ -40,6 +47,23 @@ public class CustomerController {
     @PostMapping("/save")
     public String create(@ModelAttribute Customer customer){
         customerService.save(customer);
+        return "redirect:/customer";
+    }
+    @PostMapping ("/delete")
+    public String delete(int id){
+       customerService.delete(id);
+       return "redirect:/customer";
+    }
+    @GetMapping("/{id}/edit")
+    public String showUpdate(@PathVariable int id, Model model){
+        model.addAttribute("customerUpdate",customerService.findById(id));
+        List<CustomerType> customerTypeList = customerTypeService.findAll();
+        model.addAttribute("customerTypeUpdate",customerTypeList);
+        return "customer/edit";
+    }
+    @PostMapping("edit")
+    public String update(Customer customer){
+        customerService.update(customer);
         return "redirect:/customer";
     }
 
