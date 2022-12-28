@@ -34,6 +34,7 @@ public class BookController {
         Book book = bookService.findById(id);
         if(book.getAmount()==0){
             throw new OutOfBookException();
+
         }else {
             book.setAmount(book.getAmount()-1);
             bookService.save(book);

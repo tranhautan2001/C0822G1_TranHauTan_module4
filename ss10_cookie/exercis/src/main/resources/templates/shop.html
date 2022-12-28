@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Hình Ảnh</th>
+        <th>price</th>
+        <th>Shop</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each ="product, rowStart : ${list}">
+        <td th:text="${rowStart.count}" ></td>
+        <td th:text="${product.name}"></td>
+        <td><img th:src="@{${product.description}}" style="width: 100px; height: 100px"></td>
+        <td th:text="${product.price}"></td>
+        <td><a th:href="@{/add/__${product.id}__}">Mua</a></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+

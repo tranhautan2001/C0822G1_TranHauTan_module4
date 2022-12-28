@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body>
+<p>
+    <a href="/shop">Shop</a>
+</p>
+
+<table class="table table-dark table-striped">
+    <tr>
+        <th> Item </th>
+        <th> Hình Ảnh </th>
+        <th> Quantity </th>
+        <th> Price </th>
+    </tr>
+    <tr th:each="product: ${list}">
+        <td th:text="${product.key.name}"></td>
+        <td><img th:src="@{${product.key.description}}" style="width: 100px; height: 100px"></td>
+        <td th:text="${product.value}"></td>
+        <td th:text="${product.key.price}"></td>
+    </tr>
+    <tr>
+        <td>Tổng Tiền</td>
+        <td></td>
+        <td></td>
+        <td th:text="${cart.countTotalPayment()}"></td>
+    </tr>
+</table>
+</body>
+</html>

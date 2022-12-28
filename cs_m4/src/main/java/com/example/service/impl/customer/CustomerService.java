@@ -1,8 +1,8 @@
-package com.example.service.impl;
+package com.example.service.impl.customer;
 
 import com.example.model.customer.Customer;
-import com.example.repository.ICustomerRepository;
-import com.example.service.ICustomerService;
+import com.example.repository.customer.ICustomerRepository;
+import com.example.service.interfaceCustomer.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.data.domain.Page;
