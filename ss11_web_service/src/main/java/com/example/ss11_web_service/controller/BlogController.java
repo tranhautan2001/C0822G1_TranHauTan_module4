@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
+@CrossOrigin("*")
 @RequestMapping("/blog")
 public class BlogController {
     @Autowired

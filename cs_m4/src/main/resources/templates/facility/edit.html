@@ -64,8 +64,11 @@
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">CHỈNH SỬA DỊCH VỤ</h3>
-            <form th:action="@{/facility/edit}" th:object="${facilityUpdate}">
+            <form th:action="@{/facility/edit}" method="post" th:object="${facilityUpdate}">
 
+              <div th:if="${facilityType == 1 || facilityType == 2 || facilityType == 3}" class="form-outline">
+                <input type="hidden" th:field="*{id}" class="form-control form-control-lg"/>
+              </div>
 
               <div class="form-outline">
                 <label th:for="facilityType" class="form-label fs-6">Loại Dịch Vụ</label>

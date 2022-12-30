@@ -10,5 +10,5 @@ public interface IFacilityService {
     void delete(int id);
     boolean update(Facility facility);
     Facility findById(int id);
-    Page<Facility> search(String name, String email, String type, Pageable pageable);
+    Page<Facility> search(String name , String type, Pageable pageable);
 }

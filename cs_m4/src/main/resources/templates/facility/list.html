@@ -50,9 +50,13 @@
           <a style="color: white" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contract</a>
         </li>
       </div>
-      <form class="d-flex" action="/customer/search" method="get">
+      <form class="d-flex" action="/facility/search" method="get">
         <input class="form-control me-2" name="name" type="search" placeholder="Tên" aria-label="Search">
-        <input class="form-control me-2" name="type" type="search" placeholder="Kiểu" aria-label="Search">
+        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+          <select th:field="*{facilityList}">
+            <option th:each="ct : ${facilityType}" th:value="${ct.id}" th:text="${ct.name}"></option>
+          </select>
+        </div>
         <button style="color: white" class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>

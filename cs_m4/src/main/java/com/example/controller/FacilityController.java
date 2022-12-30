@@ -64,10 +64,18 @@ public class FacilityController {
         return "facility/edit";
     }
     @PostMapping("edit")
-    public String edit(Facility facility){
+    public String edit( Facility facility){
         facilityService.update(facility);
         return "redirect:/facility";
     }
+
+    @GetMapping("/search")
+    public String search(String name ,String type, Model model,@PageableDefault( value = 5) Pageable pageable ){
+        model.addAttribute("facilityList",facilityService.search(name, type, pageable));
+        model.addAttribute("facilityType",facilityTypeService.findAll());
+        return "facility/list";
+    }
+
 
 
 }
