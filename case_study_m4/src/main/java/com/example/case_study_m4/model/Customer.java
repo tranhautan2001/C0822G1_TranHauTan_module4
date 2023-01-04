@@ -28,8 +28,7 @@ public class Customer {
     private String address;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_type_id",referencedColumnName = "id")
+    @ManyToOne
     private CustomerType customerType;
 
     @OneToMany(mappedBy = "customer")

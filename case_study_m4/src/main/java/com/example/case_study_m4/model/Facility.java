@@ -19,10 +19,10 @@ public class Facility {
 
     private String maxPeople;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private FacilityType facilityType;
 
-    @ManyToOne(cascade =CascadeType.ALL)
+    @ManyToOne
     private RentType rentType;
 
     @OneToMany(mappedBy = "facility")
