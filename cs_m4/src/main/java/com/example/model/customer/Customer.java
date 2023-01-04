@@ -1,6 +1,9 @@
 package com.example.model.customer;
 
+import com.example.model.contract.Contract;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -20,6 +23,10 @@ public class Customer {
 
     @ManyToOne
     private CustomerType customerType;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<Contract> contracts;
+
 
     public Customer() {
     }
@@ -95,4 +102,6 @@ public class Customer {
     public void setCustomerType(CustomerType customerType) {
         this.customerType = customerType;
     }
+
+
 }

@@ -53,7 +53,7 @@ public class FacilityService implements IFacilityService {
     }
 
     @Override
-    public Page<Facility> search(String name, String type, Pageable pageable) {
-        return facilityRepository.searchFacility(name,type,pageable);
+    public Page<Facility> search(String name,Integer facilityTypeId, Pageable pageable) {
+        return facilityRepository.searchFacility(name ,facilityTypeId,pageable);
     }
 }

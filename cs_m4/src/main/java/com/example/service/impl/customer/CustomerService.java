@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class CustomerService implements ICustomerService {
 
@@ -28,6 +29,8 @@ public class CustomerService implements ICustomerService {
             return false;
         }
         return true;
+
+
     }
 
     @Override
@@ -51,6 +54,7 @@ public class CustomerService implements ICustomerService {
     public Customer findById(int id) {
         return customerRepository.findById(id).get();
     }
+
 
     @Override
     public Page<Customer> search(String name, String email, String type, Pageable pageable) {

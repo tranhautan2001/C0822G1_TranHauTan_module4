@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IFacilityRepository extends JpaRepository<Facility ,Integer> {
-    @Query(value = "select * from facility where name like concat('%' :name '%' ) and facility_type where id like concat('%' :type '%')" ,nativeQuery = true)
-    Page<Facility> searchFacility  (@Param("name")String name , @Param("type")String Type , Pageable pageable);
+    @Query(value = "select * from facility where name like concat('%', :name, '%') and facility_type_id like concat('%', :facilityTypeId, '%')", nativeQuery = true)
+    Page<Facility> searchFacility(@Param("name") String name, @Param("facilityTypeId") Integer facilityTypeId, Pageable pageable);
+
+
 }

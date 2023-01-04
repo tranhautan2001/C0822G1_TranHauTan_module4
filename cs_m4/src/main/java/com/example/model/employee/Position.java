@@ -11,7 +11,7 @@ public class Position {
     private int id;
     private String name;
 
-    @OneToMany
+    @OneToMany()
     private Set<Employee> employees;
 
     public Position() {

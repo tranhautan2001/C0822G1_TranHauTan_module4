@@ -1,6 +1,9 @@
 package com.example.model.facility;
 
+import com.example.model.contract.Contract;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Facility {
@@ -22,6 +25,9 @@ public class Facility {
     private FacilityType facilityType;
     @ManyToOne
     private RentType rentType;
+
+    @OneToMany(mappedBy = "facility")
+    private Set<Contract> contracts;
 
     public Facility() {
     }
