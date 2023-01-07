@@ -63,6 +63,7 @@ public class CustomerController {
     }
     @PostMapping("edit")
     public String update(Customer customer){
+
         customerService.update(customer);
         return "redirect:/customer";
     }

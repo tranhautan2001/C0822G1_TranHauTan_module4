@@ -90,12 +90,11 @@
     <th scope="col">đ200.000.000</th>
 
     <!-- Button trigger modal -->
-   <td>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-     +
-    </button>
+    <td>
+      <button class="btn btn-primary " data-bs-toggle="modal"
+              data-bs-target="#exampleModal" th:attr="onclick=|contract('${contract.id}')|"><i class="fa-sharp fa-solid fa-trash"></i></i>+</button>
     <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">
         Danh Sách Các Dịch Vụ Đi Kèm
       </button>
     </td>
@@ -118,15 +117,30 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
+        <form action="/contract/add" method="post" th:object="${contractDetail}">
+
+            <input id="contractID" class="form-control" type="text" th:field="*{contract}">
+          <lable th:for="quantity">Nhập số tượng</lable>
+           <input class="form-control" type="text" th:field="*{quantity}">
+          <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+            <label th:for="customer" class="form-label fs-6">Dịch Vụ Đi Kèm</label>
+            <select th:field="*{attachFacility}" class="select form-control-lg">
+              <option th:each="ct : ${attachFacilityList}" th:value="${ct.id}"
+                      th:text="${ct.name}"></option>
+            </select>
+          </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
+      </form>
+      </div>
+
     </div>
   </div>
 </div>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -137,32 +151,25 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <form action="contract/show" method="post"></form>
         <table class="table">
           <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">STT</th>
+            <th scope="col">Name</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Unit</th>
+            <th scope="col">Status</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
+          <tr th:each="attach,rowStart : ${attact}">
+            <td th:text="${rowStart.count}" ></td>
+            <td th:text="${attach.name}" ></td>
+            <td th:text="${attach.cost}" ></td>
+            <td th:text="${attach.unit}" ></td>
+            <td th:text="${attach.status}" ></td>
+
           </tr>
           </tbody>
         </table>
@@ -180,5 +187,10 @@
 <script>
 </script>
 
+<SCRIPT>
+  function contract(id){
+    document.getElementById("contractID").value = id;
+  }
+</SCRIPT>
 </body>
 </html>
