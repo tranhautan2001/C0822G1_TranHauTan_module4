@@ -1,52 +1,39 @@
-package com.example.model.facility;
+package com.example.dto;
 
-import com.example.model.contract.Contract;
+import com.example.model.facility.FacilityType;
+import com.example.model.facility.RentType;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
-public class Facility {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class FacilityDto implements Validator {
     private int id;
+
+    @NotBlank(message = "tên không được bỏ trống")
+    @Pattern(regexp = "^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$", message = "tên phải đúng định dạng Chữ cái đầu viết hoa")
     private String name;
     private int area;
     private double cost;
     private int maxPeople;
+
+    @NotBlank(message = "phòng không được để trống")
     private String standardRoom;
+
+    @NotBlank(message = "mô tả không được để trống")
     private String descriptionOtherConvenience;
+
+    @NotBlank(message = "khu vực hồ bơi không được để trống")
     private String poolArea;
+
+    @NotBlank(message = "số tâng không được để trống")
     private String numberOfFloors;
     private String facilityFree;
-    private boolean flagDelete;
 
-    @ManyToOne
-    private FacilityType facilityType;
-    @ManyToOne
     private RentType rentType;
+    private FacilityType facilityType;
 
-    @OneToMany(mappedBy = "facility")
-    private Set<Contract> contracts;
-
-    public Facility() {
-    }
-
-    public boolean isFlagDelete() {
-        return flagDelete;
-    }
-
-    public void setFlagDelete(boolean flagDelete) {
-        this.flagDelete = flagDelete;
-    }
-
-    public Set<Contract> getContracts() {
-        return contracts;
-    }
-
-    public void setContracts(Set<Contract> contracts) {
-        this.contracts = contracts;
+    public FacilityDto() {
     }
 
     public int getId() {
@@ -129,6 +116,14 @@ public class Facility {
         this.facilityFree = facilityFree;
     }
 
+    public RentType getRentType() {
+        return rentType;
+    }
+
+    public void setRentType(RentType rentType) {
+        this.rentType = rentType;
+    }
+
     public FacilityType getFacilityType() {
         return facilityType;
     }
@@ -137,11 +132,13 @@ public class Facility {
         this.facilityType = facilityType;
     }
 
-    public RentType getRentType() {
-        return rentType;
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
     }
 
-    public void setRentType(RentType rentType) {
-        this.rentType = rentType;
+    @Override
+    public void validate(Object target, Errors errors) {
+     FacilityDto facilityDto = (FacilityDto) target;
     }
 }

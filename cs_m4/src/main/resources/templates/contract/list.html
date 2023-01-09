@@ -151,7 +151,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="contract/show" method="post"></form>
+        <form action="/contract/"></form>
         <table class="table">
           <thead>
           <tr>
@@ -163,7 +163,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr th:each="attach,rowStart : ${attact}">
+          <tr th:each="attach,rowStart : ${attachFacilityList}">
             <td th:text="${rowStart.count}" ></td>
             <td th:text="${attach.name}" ></td>
             <td th:text="${attach.cost}" ></td>
@@ -181,6 +181,46 @@
     </div>
   </div>
 </div>
+
+<div>
+  <nav aria-label="..." class="justify-content-center d-flex">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" th:href="@{/contract/(page=${contractList.number - 1})}"
+           th:if="${contractList.hasPrevious()}">&laquo;</a>
+      </li>
+      <li class="page-item disabled" th:unless="${contractList.hasPrevious()}">
+        <a class="page-link">&laquo;</a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" th:href="@{/contract/(page=${contractList.number - 1})}"
+           th:if="${contractList.hasPrevious()}" th:text="${contractList.number}"></a>
+      </li>
+
+      <li class="page-item active">
+        <a class="page-link" th:href="@{/contract/(page=${contractList.number})}"
+           th:text="${contractList.number + 1}">
+          <span class="sr-only">(trang hiện tại)</span></a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" th:href="@{/contract/(page=${contractList.number+1})}" th:text="${contractList.number+2}"
+           th:if="${contractList.hasNext()}"></a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" th:href="@{/contract/(page=${contractList.number+1})}"
+           th:if="${contractList.hasNext()}">&raquo;</a>
+      </li>
+      <li class="page-item disabled" th:unless="${contractList.hasNext()}">
+        <a class="page-link">&raquo;</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+
 <script src="jquery/jquery-3.5.1.min.js"></script>
 <script src="datatables/js/jquery.dataTables.min.js"></script>
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
@@ -192,5 +232,6 @@
     document.getElementById("contractID").value = id;
   }
 </SCRIPT>
+
 </body>
 </html>

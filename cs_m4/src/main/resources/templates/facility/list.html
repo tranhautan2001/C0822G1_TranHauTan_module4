@@ -94,7 +94,7 @@
     <td th:text="${facility.facilityFree}" ></td>
     <td>
       <button class="btn btn-danger" data-bs-toggle="modal"
-              data-bs-target="#deleteModal" th:attr="onclick=|deleteCustomer('${facility.id}','${facility.name}')|"><i class="fa-sharp fa-solid fa-trash"></i></i>Delete</button>
+              data-bs-target="#deleteModal" th:attr="onclick=|deleteFacility('${facility.id}','${facility.name}')|"><i class="fa-sharp fa-solid fa-trash"></i></i>Delete</button>
     </td>
     <td>
       <a type="button" class="btn btn-primary" th:href="@{/facility/{id}/edit(id=${facility.id})}">
@@ -133,46 +133,46 @@
     </div>
   </div>
 </div>
-<!--<div>
+<div>
   <nav aria-label="..." class="justify-content-center d-flex">
     <ul class="pagination">
       <li class="page-item">
-        <a class="page-link" th:href="@{/customer/(page=${customerList.number - 1})}"
-           th:if="${customerList.hasPrevious()}">&laquo;</a>
+        <a class="page-link" th:href="@{/facility/(page=${facilityList.number - 1})}"
+           th:if="${facilityList.hasPrevious()}">&laquo;</a>
       </li>
-      <li class="page-item disabled" th:unless="${customerList.hasPrevious()}">
+      <li class="page-item disabled" th:unless="${facilityList.hasPrevious()}">
         <a class="page-link">&laquo;</a>
       </li>
 
       <li class="page-item">
-        <a class="page-link" th:href="@{/customer/(page=${customerList.number - 1})}"
-           th:if="${customerList.hasPrevious()}" th:text="${customerList.number}"></a>
+        <a class="page-link" th:href="@{/facility/(page=${facilityList.number - 1})}"
+           th:if="${facilityList.hasPrevious()}" th:text="${facilityList.number}"></a>
       </li>
 
       <li class="page-item active">
-        <a class="page-link" th:href="@{/customer/(page=${customerList.number})}"
-           th:text="${customerList.number + 1}">
+        <a class="page-link" th:href="@{/facility/(page=${facilityList.number})}"
+           th:text="${facilityList.number + 1}">
           <span class="sr-only">(trang hiện tại)</span></a>
       </li>
 
       <li class="page-item">
-        <a class="page-link" th:href="@{/customer/(page=${customerList.number+1})}" th:text="${customerList.number+2}"
-           th:if="${customerList.hasNext()}"></a>
+        <a class="page-link" th:href="@{/facility/(page=${facilityList.number+1})}" th:text="${facilityList.number+2}"
+           th:if="${facilityList.hasNext()}"></a>
       </li>
 
       <li class="page-item">
-        <a class="page-link" th:href="@{/customer/(page=${customerList.number+1})}"
-           th:if="${customerList.hasNext()}">&raquo;</a>
+        <a class="page-link" th:href="@{/facility/(page=${facilityList.number+1})}"
+           th:if="${facilityList.hasNext()}">&raquo;</a>
       </li>
-      <li class="page-item disabled" th:unless="${customerList.hasNext()}">
+      <li class="page-item disabled" th:unless="${facilityList.hasNext()}">
         <a class="page-link">&raquo;</a>
       </li>
     </ul>
   </nav>
-</div>-->
+</div>
 
 <script>
-  function deleteCustomer(id,name) {
+  function deleteFacility(id,name) {
     document.getElementById("nameDelete").innerText = name;
     document.getElementById("idDelete").value = id;
   }

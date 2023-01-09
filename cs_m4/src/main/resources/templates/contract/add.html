@@ -54,24 +54,22 @@
 
 <div id="form">
 
-    <form th:action="@{/contract/save}" th:object="${contract}"
+    <form th:action="@{/contract/save}" th:method="post" th:object="${contractDto}"
           method="POST" novalidate="novalidate">
-        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input class="form-control" hidden th:field="*{id}" placeholder="STT" aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-     <!--   <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <select th:field="*{customerType}">
-                <option th:each="ct : ${customerTypes}" th:value="${ct.id}" th:text="${ct.name}"></option>
-            </select>
-        </div>-->
+            <input class="form-control" hidden th:field="*{id}">
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
-            <input class="form-control" type="date" th:field="*{startDate}" placeholder="startDate" aria-label="Username" aria-describedby="basic-addon1">
+            <input class="form-control" type="date" th:field="*{startDate}" placeholder="startDate">
+            <p th:errors="*{startDate}" class="text-danger" ></p>
+
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input  class="form-control" type="date" th:field="*{endDate}" placeholder="endDate" aria-label="Username" aria-describedby="basic-addon1">
+            <input  class="form-control" type="date" th:field="*{endDate}" placeholder="endDate" >
+            <p th:errors="*{endDate}" class="text-danger" ></p>
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input  class="form-control" type="number" th:field="*{deposit}" placeholder="deposit" aria-label="Username" aria-describedby="basic-addon1">
+            <input  class="form-control" type="number" th:field="*{deposit}" placeholder="deposit" >
+            <p th:errors="*{deposit}" class="text-danger" ></p>
+
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
             <label th:for="customer" class="form-label fs-6">Khách hàng</label>

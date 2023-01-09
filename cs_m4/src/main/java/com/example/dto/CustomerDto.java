@@ -1,51 +1,43 @@
-package com.example.model.customer;
+package com.example.dto;
 
-import com.example.model.contract.Contract;
+import com.example.model.customer.CustomerType;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-@Entity
-public class Customer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+public class CustomerDto implements Validator {
+
     private int id;
+
+    @NotBlank(message = "tên không được bỏ trống ")
+    @Pattern(regexp = "^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$" ,message = "tên phải đúng định dạng")
     private String name;
+    @DateTimeFormat(pattern = "DD/MM/YYYY")
     private String dateOfBirth;
     private double gender;
-    @Column(unique=true)
+    @NotBlank(message = "ID Card không được bỏ trống")
+    @Pattern(regexp = "^\\d{9}$",message = "nhập đúng định dạng cmnd")
+    @Column(unique = true)
     private String idCard;
-    @Column(unique=true)
+    @NotBlank(message = "không được để trống số điện thoại")
+    @Pattern(regexp = "[0-9]{10}",message = "nhập đúng định dạng số điện thoại ")
+    @Column(unique = true)
     private String phoneNumber;
-    @Column(unique=true)
+    @NotBlank(message = "khồn đươc bỏ trống email")
+    @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$",message = "yêu cầu nhập đúng định dạng email")
+    @Column(unique = true)
     private String email;
+    @NotBlank(message = "không được bỏ trống address")
     private String address;
-    private boolean flagDelete;
 
-    @ManyToOne
     private CustomerType customerType;
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Contract> contracts;
-
-
-    public Customer() {
-    }
-
-    public boolean isFlagDelete() {
-        return flagDelete;
-    }
-
-    public void setFlagDelete(boolean flagDelete) {
-        this.flagDelete = flagDelete;
-    }
-
-    public Set<Contract> getContracts() {
-        return contracts;
-    }
-
-    public void setContracts(Set<Contract> contracts) {
-        this.contracts = contracts;
+    public CustomerDto() {
     }
 
     public int getId() {
@@ -120,5 +112,14 @@ public class Customer {
         this.customerType = customerType;
     }
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
 
+    @Override
+    public void validate(Object target, Errors errors) {
+        CustomerDto customerDto = (CustomerDto) target;
+
+    }
 }

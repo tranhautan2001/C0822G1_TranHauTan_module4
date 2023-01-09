@@ -1,14 +1,18 @@
 package com.example.controller;
 
+import com.example.dto.CustomerDto;
 import com.example.model.customer.Customer;
 import com.example.model.customer.CustomerType;
 import com.example.service.interfaceCustomer.ICustomerService;
 import com.example.service.interfaceCustomer.ICustomerTypeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,13 +45,21 @@ public class CustomerController {
     public String showCreate(Model model){
         List<CustomerType> customerTypes = customerTypeService.findAll();
         model.addAttribute("customerTypes",customerTypes);
-        model.addAttribute("customerList",new Customer());
+        model.addAttribute("customerDto",new CustomerDto());
         return "customer/add";
     }
     @PostMapping("/save")
-    public String create(@ModelAttribute Customer customer){
-        customerService.save(customer);
-        return "redirect:/customer";
+        public String create(@Validated @ModelAttribute CustomerDto customerDto,
+                BindingResult bindingResult,Model model){
+            if (bindingResult.hasErrors()){
+                List<CustomerType> customerTypes = customerTypeService.findAll();
+                model.addAttribute("customerTypes",customerTypes);
+                return "customer/add";
+            }
+                Customer customer = new Customer();
+                BeanUtils.copyProperties(customerDto,customer);
+                customerService.save(customer);
+                return "redirect:/customer";
     }
     @PostMapping ("/delete")
     public String delete(int id){
@@ -63,7 +75,6 @@ public class CustomerController {
     }
     @PostMapping("edit")
     public String update(Customer customer){
-
         customerService.update(customer);
         return "redirect:/customer";
     }

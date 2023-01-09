@@ -1,29 +1,32 @@
-package com.example.model.contract;
+package com.example.dto;
 
 import com.example.model.customer.Customer;
 import com.example.model.employee.Employee;
 import com.example.model.facility.Facility;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
-@Entity
-public class Contract {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContractDto implements Validator {
     private int id;
+    @NotBlank(message = "không được để trống ngày bắt đầu")
+    @DateTimeFormat(pattern = "DD/MM/YYYY")
     private String startDate;
+    @NotBlank(message = "không được để trống ngày kết thúc")
+    @DateTimeFormat(pattern = "DD/MM/YYYY")
     private String endDate;
-    private double deposit;
+    @NotBlank(message = "không được để trống")
+    private String deposit;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id",referencedColumnName = "id")
+
+
     private Customer customer;
-    @ManyToOne
     private Facility facility;
-    @ManyToOne
     private Employee employee;
 
-    public Contract() {
+    public ContractDto() {
     }
 
     public int getId() {
@@ -33,6 +36,7 @@ public class Contract {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getStartDate() {
         return startDate;
@@ -50,11 +54,11 @@ public class Contract {
         this.endDate = endDate;
     }
 
-    public double getDeposit() {
+    public String getDeposit() {
         return deposit;
     }
 
-    public void setDeposit(double deposit) {
+    public void setDeposit(String deposit) {
         this.deposit = deposit;
     }
 
@@ -81,4 +85,15 @@ public class Contract {
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+      return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        ContractDto contractDto = (ContractDto) target;
+    }
+
 }

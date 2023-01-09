@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import com.example.dto.ContractDto;
+import com.example.dto.CustomerDto;
+import com.example.dto.FacilityDto;
 import com.example.model.contract.AttachFacility;
 import com.example.model.contract.Contract;
 import com.example.model.contract.ContractDetail;
@@ -12,10 +15,15 @@ import com.example.repository.facility.IFacilityRepository;
 import com.example.service.interfaceContract.IAttachFacilityService;
 import com.example.service.interfaceContract.IContractDetailService;
 import com.example.service.interfaceContract.IContractService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,8 +47,8 @@ public class ContractController {
 
 
     @GetMapping("")
-    public String showList(Model model) {
-        model.addAttribute("contractList", contractService.findAll());
+    public String showList(Model model ,@PageableDefault(value = 5) Pageable pageable) {
+        model.addAttribute("contractList", contractService.findAll(pageable));
         model.addAttribute("attachFacilityList", attachFacilityService.findAll());
         model.addAttribute("contractDetailList", contractDetailService.findAll());
         model.addAttribute("customerList", customerRepository.findAll());
@@ -57,7 +65,7 @@ public class ContractController {
         List<Customer> customerList = customerRepository.findAll();
         List<Facility> facilityList = facilityRepository.findAll();
         List<Employee> employeeList = employeeRepository.findAll();
-        model.addAttribute("contract", new Contract());
+        model.addAttribute("contractDto", new ContractDto());
         model.addAttribute("attachFacilityList", attachFacilityList);
         model.addAttribute("contractDetailList", contractDetailList);
         model.addAttribute("customerList", customerList);
@@ -67,7 +75,18 @@ public class ContractController {
     }
 
     @PostMapping("save")
-    public String create(@ModelAttribute Contract contract) {
+    public String create(@Validated @ModelAttribute ContractDto contractDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            List<Customer> customerList = customerRepository.findAll();
+            List<Facility> facilityList = facilityRepository.findAll();
+            List<Employee> employeeList = employeeRepository.findAll();
+            model.addAttribute("customerList", customerList);
+            model.addAttribute("facilityList", facilityList);
+            model.addAttribute("employeeList", employeeList);
+            return "contract/add";
+        }
+        Contract contract = new Contract();
+        BeanUtils.copyProperties(contractDto, contract);
         contractService.add(contract);
         return "redirect:/contract";
     }
@@ -78,9 +97,9 @@ public class ContractController {
         return "redirect:/contract";
     }
     @PostMapping("show")
-    public String showId(Model model, @PathVariable("id") int id){
-        List<AttachFacility> attachFacilityList = attachFacilityService.findAll();
-        model.addAttribute("attact",attachFacilityService.finByID(id));
+    public String showId(Model model,AttachFacility attachFacility, @PathVariable("id") int id){
+        attachFacility = attachFacilityService.finByID(id);
+        model.addAttribute("attact",attachFacility);
         return "redirect:/contract";
 
     }

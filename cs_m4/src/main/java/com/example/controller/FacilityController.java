@@ -1,16 +1,23 @@
 package com.example.controller;
 
+import com.example.dto.CustomerDto;
+import com.example.dto.FacilityDto;
+import com.example.model.customer.Customer;
+import com.example.model.customer.CustomerType;
 import com.example.model.facility.Facility;
 import com.example.model.facility.FacilityType;
 import com.example.model.facility.RentType;
 import com.example.service.interfaceFacility.IFacilityService;
 import com.example.service.interfaceFacility.IFacilityTypeService;
 import com.example.service.interfaceFacility.IRentTypeService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,7 +47,7 @@ public class FacilityController {
     }
     @GetMapping("/create")
     public String showCreate(Model model){
-        model.addAttribute("facilityList",new Facility());
+        model.addAttribute("facilityDto",new FacilityDto());
         List<RentType> rentTypeList = rentTypeService.findAll();
         List<FacilityType> facilityTypeList = facilityTypeService.findAll();
         model.addAttribute("rentTypeList",rentTypeList);
@@ -48,7 +55,16 @@ public class FacilityController {
         return "facility/add";
     }
     @PostMapping("/save")
-    public String create(@ModelAttribute Facility facility){
+    public String create(@Validated @ModelAttribute FacilityDto facilityDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            List<RentType> rentTypeList = rentTypeService.findAll();
+            List<FacilityType> facilityTypeList = facilityTypeService.findAll();
+            model.addAttribute("rentTypeList",rentTypeList);
+            model.addAttribute("facilityTypeList",facilityTypeList);
+            return "facility/add";
+        }
+        Facility facility = new Facility();
+        BeanUtils.copyProperties(facilityDto, facility);
         facilityService.save(facility);
         return "redirect:/facility";
     }

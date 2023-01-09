@@ -100,10 +100,10 @@
         <input type="submit" value="Save"/>
     </form>-->
 
-    <form th:action="@{/customer/save}" th:object="${customerList}"
+    <form th:action="@{/customer/save}" th:object="${customerDto}"
           method="POST" novalidate="novalidate">
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input class="form-control"  type="hidden" th:field="*{id}" placeholder="STT" aria-label="Username" aria-describedby="basic-addon1">
+            <input class="form-control"  type="hidden" th:field="*{id}" >
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
                 <select th:field="*{customerType}">
@@ -112,28 +112,39 @@
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center ;margin-bottom: 10px">
             <input class="form-control" type="text" th:field="*{name}" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+            <p th:errors="*{name}"></p>
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input  class="form-control" type="date" th:field="*{dateOfBirth}" placeholder="Date Of Birth" aria-label="Username" aria-describedby="basic-addon1">
+            <input  class="form-control" type="date" th:field="*{dateOfBirth}" placeholder="Date Of Birth">
+            <p th:errors="*{dateOfBirth}" class="text-danger" ></p>
+
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input  class="form-control" type="radio" th:value="0" th:field="*{gender}"  placeholder="Gender" aria-label="Username" aria-describedby="basic-addon1">Nữ
-            <input  class="form-control" type="radio" th:value="1" th:field="*{gender}"  placeholder="Gender" aria-label="Username" aria-describedby="basic-addon1">Nam
+            <input  type="radio" th:value="0" th:field="*{gender}"  placeholder="Gender" >Nữ
+            <input  type="radio" th:value="1" th:field="*{gender}"  placeholder="Gender" >Nam
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input  class="form-control" type="text" th:field="*{idCard}" placeholder="ID Card" aria-label="Username" aria-describedby="basic-addon1">
+            <input  class="form-control" type="text" th:field="*{idCard}" placeholder="ID Card" >
+            <p th:errors="*{idCard}" class="text-danger" ></p>
+
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input class="form-control" type="text" th:field="*{phoneNumber}" placeholder="Phone Number" aria-label="Username" aria-describedby="basic-addon1">
+            <input class="form-control" type="text" th:field="*{phoneNumber}" placeholder="Phone Number" >
+            <p th:errors="*{phoneNumber}" class="text-danger" ></p>
+
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input class="form-control" type="text" th:field="*{email}" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
+            <input class="form-control" type="text" th:field="*{email}" placeholder="Email" aria-label="Username" >
+            <p th:errors="*{email}" class="text-danger" ></p>
+
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <input class="form-control" type="text" th:field="*{address}" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+            <input class="form-control" type="text" th:field="*{address}" placeholder="Address" aria-label="Username" >
+            <p th:errors="*{address}" class="text-danger" ></p>
+
         </div>
         <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <button type="submit" value="Save" class="btn btn-primary" data-bs-toggle="modal">EDIT </button>
+            <button type="submit" value="Save" class="btn btn-primary" data-bs-toggle="modal">ADD </button>
         </div>
     </form>
 </div>
