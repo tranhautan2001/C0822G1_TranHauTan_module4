@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer , Integer> {
@@ -15,4 +16,6 @@ public interface ICustomerRepository extends JpaRepository<Customer , Integer> {
            "and ct.name like concat('%' :type '%') and c.flag_delete = false " ,nativeQuery = true)
     Page<Customer> searchCustomer(@Param("name")String name,@Param("email")String email,@Param("type") String Type ,Pageable pageable);
 
+   @Query(value = "select * from `customer` where flag_delete = false",nativeQuery = true)
+    Page<Customer> showList(Pageable pageable);
 }

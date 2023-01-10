@@ -1,8 +1,6 @@
 package com.example.controller;
 
 import com.example.dto.ContractDto;
-import com.example.dto.CustomerDto;
-import com.example.dto.FacilityDto;
 import com.example.model.contract.AttachFacility;
 import com.example.model.contract.Contract;
 import com.example.model.contract.ContractDetail;
@@ -18,7 +16,6 @@ import com.example.service.interfaceContract.IContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,7 +90,7 @@ public class ContractController {
 
     @PostMapping("/add")
     public String showAdd(ContractDetail contractDetail) {
-     contractDetailService.save(contractDetail);
+        contractDetailService.save(contractDetail);
         return "redirect:/contract";
     }
     @PostMapping("show")

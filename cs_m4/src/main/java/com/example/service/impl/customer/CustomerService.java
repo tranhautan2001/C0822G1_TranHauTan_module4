@@ -17,7 +17,7 @@ public class CustomerService implements ICustomerService {
     private ICustomerRepository customerRepository;
     @Override
     public Page<Customer> finAll(Pageable pageable) {
-        return customerRepository.findAll(pageable);
+        return customerRepository.showList(pageable);
     }
 
     @Override
@@ -35,8 +35,11 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public void delete(int id) {
-        customerRepository.deleteById(id);
+        Customer customer = findById(id);
+        customer.setFlagDelete(true);
+        customerRepository.save(customer);
     }
+
 
     @Override
     public boolean update(Customer customer) {

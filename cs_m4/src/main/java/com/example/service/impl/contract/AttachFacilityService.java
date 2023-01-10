@@ -1,5 +1,6 @@
 package com.example.service.impl.contract;
 
+import com.example.dto.IAttachFacilityDto;
 import com.example.model.contract.AttachFacility;
 import com.example.repository.contract.IAttachFacilityRepository;
 import com.example.service.interfaceContract.IAttachFacilityService;
@@ -21,5 +22,10 @@ public class AttachFacilityService implements IAttachFacilityService {
     @Override
     public AttachFacility finByID(Integer id) {
         return attachFacilityRepository.findById(id).get();
+    }
+
+    @Override
+    public List<IAttachFacilityDto> showList(Integer id) {
+        return attachFacilityRepository.showList(id);
     }
 }

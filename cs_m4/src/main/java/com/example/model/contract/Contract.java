@@ -16,7 +16,6 @@ public class Contract {
     private double deposit;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id",referencedColumnName = "id")
     private Customer customer;
     @ManyToOne
     private Facility facility;

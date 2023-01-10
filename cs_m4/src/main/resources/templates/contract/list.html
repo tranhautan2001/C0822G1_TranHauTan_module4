@@ -1,223 +1,206 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/bootstrap520/css/bootstrap.css">
-  <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap5.min.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/bootstrap520/css/bootstrap.css">
+    <link rel="stylesheet" href="/datatables/css/dataTables.bootstrap5.min.css">
 </head>
 <body>
 <div class="container-fluid">
-  <div class="row" style="height: 100px">
-    <div class="col-2" style="background-color: white;display: flex;justify-content: center">
-      <img src="../../images/logo@2x.png" style="height: 100px;width: 70px">
+    <div class="row" style="height: 100px">
+        <div class="col-2" style="background-color: white;display: flex;justify-content: center">
+            <img src="../../images/logo@2x.png" style="height: 100px;width: 70px">
+        </div>
+        <div class="col-7" style="background-color: white;display: flex;justify-content: center">
+            <div class="row1">
+                <span style="font-size: 12px">103 – 105 Đường Võ Nguyên Giáp, Phường Khuê Mỹ,</span>
+                <br>
+                <span style="font-size: 12px">  Quận Ngũ hành Sơn, Tp. Đà Nẵng, Việt Nam</span><br>
+                <span style="font-size: 12px"> 7.0 km từ Sân bay Quốc tế Đà Nẵng</span><br>
+                <span style="font-size: 12px">  84-236-3847 333/888</span><br>
+                <span style="font-size: 12px">  reservation@furamavietnam.com</span>
+            </div>
+        </div>
     </div>
-    <div class="col-7" style="background-color: white;display: flex;justify-content: center">
-      <div class="row1">
-        <span style="font-size: 12px">103 – 105 Đường Võ Nguyên Giáp, Phường Khuê Mỹ,</span>
-        <br>
-        <span style="font-size: 12px">  Quận Ngũ hành Sơn, Tp. Đà Nẵng, Việt Nam</span><br>
-        <span style="font-size: 12px"> 7.0 km từ Sân bay Quốc tế Đà Nẵng</span><br>
-        <span style="font-size: 12px">  84-236-3847 333/888</span><br>
-        <span style="font-size: 12px">  reservation@furamavietnam.com</span>
-      </div>
-    </div>
-  </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid" style="background-color: green">
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
-           style="--bs-scroll-height: 100px;margin-left: 300px">
-        <li class="nav-item">
-          <a style="color: white" class="nav-link active" aria-current="page" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Employee</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white" class="nav-link active" aria-current="page">Customer</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Service</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contract</a>
-        </li>
-      </div>
-<!--      <form class="d-flex" action="/facility/search" method="get">-->
-<!--        <input class="form-control me-2" name="name" type="search" placeholder="Tên" aria-label="Search">-->
-<!--        <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">-->
-<!--          <select th:field="*{facilityList}">-->
-<!--            <option th:each="ct : ${facilityType}" th:value="${ct.id}" th:text="${ct.name}"></option>-->
-<!--          </select>-->
-<!--        </div>-->
-<!--        <button style="color: white" class="btn btn-outline-success" type="submit">Search</button>-->
-<!--      </form>-->
+    <div class="container-fluid" style="background-color: green">
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <div class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+                 style="--bs-scroll-height: 100px;margin-left: 300px">
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Employee</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link active" aria-current="page">Customer</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contract</a>
+                </li>
+            </div>
+        </div>
     </div>
-  </div>
 </nav>
+
+<!--showList-->
+
 <div class="row"></div>
 <table class="table table-striped table-bordered" id="tableCustomer">
-  <thead>
-  <tr>
-    <th scope="col">STT</th>
-    <th scope="col">startDate</th>
-    <th scope="col">endDate</th>
-    <th scope="col">deposit</th>
-    <th scope="col">customer</th>
-    <th scope="col">facility</th>
-    <th scope="col">employee</th>
-    <th scope="col">Tổng Tiền</th>
-    <th scope="col">Các Dịch Vụ Đi Kèm</th>
-
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="contract,rowStart : ${contractList}">
-    <td th:text="${rowStart.count}" ></td>
-    <td th:text="${contract.startDate}" ></td>
-    <td th:text="${contract.endDate}" ></td>
-    <td th:text="${contract.deposit}" ></td>
-    <td th:text="${contract.customer.name}" ></td>
-    <td th:text="${contract.facility.name}" ></td>
-    <td th:text="${contract.employee.name}" ></td>
-    <th scope="col">đ200.000.000</th>
-
-    <!-- Button trigger modal -->
-    <td>
-      <button class="btn btn-primary " data-bs-toggle="modal"
-              data-bs-target="#exampleModal" th:attr="onclick=|contract('${contract.id}')|"><i class="fa-sharp fa-solid fa-trash"></i></i>+</button>
-    <!-- Button trigger modal -->
-      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-        Danh Sách Các Dịch Vụ Đi Kèm
-      </button>
-    </td>
-  </tr>
-  </c:forEach>
-  </tbody>
-  <div style="margin-left: 700px">
-    <a class="btn btn-primary" style="padding: 15px; width: 200px" th:href="@{contract/create}">ADD CONTRACT</a>
-  </div>
-
-
+    <thead>
+    <tr>
+        <th scope="col">STT</th>
+        <th scope="col">startDate</th>
+        <th scope="col">endDate</th>
+        <th scope="col">deposit</th>
+        <th scope="col">customer</th>
+        <th scope="col">facility</th>
+        <th scope="col">employee</th>
+        <th scope="col">Tổng Tiền</th>
+        <th scope="col">Các Dịch Vụ Đi Kèm</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contract,rowStart : ${contractList}">
+        <td th:text="${rowStart.count}"></td>
+        <td th:text="${contract.startDate}"></td>
+        <td th:text="${contract.endDate}"></td>
+        <td th:text="${contract.deposit}"></td>
+        <td th:text="${contract.customer.name}"></td>
+        <td th:text="${contract.facility.name}"></td>
+        <td th:text="${contract.employee.name}"></td>
+        <th scope="col">đ200.000.000</th>
+        <td>
+            <button class="btn btn-primary " data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" th:attr="onclick=|contract('${contract.id}')|"><i
+                    class="fa-sharp fa-solid fa-trash"></i></i>+
+            </button>
+            <button type="button" class="btn btn-primary"
+                th:attr="onclick=|search('${contract.id}');|" data-bs-toggle="modal"
+                data-bs-target="#exampleModal1">Danh sách dịch vụ đi kèm
+            </button>
+        </td>
+    </tr>
+    </c:forEach>
+    </tbody>
+    <div style="margin-left: 700px">
+        <a class="btn btn-primary" style="padding: 15px; width: 200px" th:href="@{contract/create}">ADD CONTRACT</a>
+    </div>
 </table>
 
-<!-- Modal -->
+<!-- Modal thêm mới  -->
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="/contract/add" method="post" th:object="${contractDetail}">
-
-            <input id="contractID" class="form-control" type="text" th:field="*{contract}">
-          <lable th:for="quantity">Nhập số tượng</lable>
-           <input class="form-control" type="text" th:field="*{quantity}">
-          <div class="container-fluid" style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
-            <label th:for="customer" class="form-label fs-6">Dịch Vụ Đi Kèm</label>
-            <select th:field="*{attachFacility}" class="select form-control-lg">
-              <option th:each="ct : ${attachFacilityList}" th:value="${ct.id}"
-                      th:text="${ct.name}"></option>
-            </select>
-          </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
-      </form>
-      </div>
-
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/contract/add" method="post" th:object="${contractDetail}">
+                    <input id="contractID" hidden class="form-control" type="text" th:field="*{contract}">
+                    <lable th:for="quantity">Nhập số tượng</lable>
+                    <input class="form-control" type="text" th:field="*{quantity}">
+                    <div class="container-fluid"
+                         style="width: 300px; display: flex ; justify-content: center; margin-bottom: 10px">
+                        <label th:for="customer" class="form-label fs-6">Dịch Vụ Đi Kèm</label>
+                        <select th:field="*{attachFacility}" class="select form-control-lg">
+                            <option th:each="ct : ${attachFacilityList}" th:value="${ct.id}"
+                                    th:text="${ct.name}"></option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
+<!-- Modal display dịch vụ đi kèm -->
 
-
-<!-- Modal -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel1">Danh Sách Các Dịch Vụ Đi Kèm</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form action="/contract/"></form>
-        <table class="table">
-          <thead>
-          <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Name</th>
-            <th scope="col">Cost</th>
-            <th scope="col">Unit</th>
-            <th scope="col">Status</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="attach,rowStart : ${attachFacilityList}">
-            <td th:text="${rowStart.count}" ></td>
-            <td th:text="${attach.name}" ></td>
-            <td th:text="${attach.cost}" ></td>
-            <td th:text="${attach.unit}" ></td>
-            <td th:text="${attach.status}" ></td>
-
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Danh Sách Các Dịch Vụ Đi Kèm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/contract/"></form>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Unit</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="my-body">
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
+
+<!--nut phân trang-->
 
 <div>
-  <nav aria-label="..." class="justify-content-center d-flex">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" th:href="@{/contract/(page=${contractList.number - 1})}"
-           th:if="${contractList.hasPrevious()}">&laquo;</a>
-      </li>
-      <li class="page-item disabled" th:unless="${contractList.hasPrevious()}">
-        <a class="page-link">&laquo;</a>
-      </li>
-
-      <li class="page-item">
-        <a class="page-link" th:href="@{/contract/(page=${contractList.number - 1})}"
-           th:if="${contractList.hasPrevious()}" th:text="${contractList.number}"></a>
-      </li>
-
-      <li class="page-item active">
-        <a class="page-link" th:href="@{/contract/(page=${contractList.number})}"
-           th:text="${contractList.number + 1}">
-          <span class="sr-only">(trang hiện tại)</span></a>
-      </li>
-
-      <li class="page-item">
-        <a class="page-link" th:href="@{/contract/(page=${contractList.number+1})}" th:text="${contractList.number+2}"
-           th:if="${contractList.hasNext()}"></a>
-      </li>
-
-      <li class="page-item">
-        <a class="page-link" th:href="@{/contract/(page=${contractList.number+1})}"
-           th:if="${contractList.hasNext()}">&raquo;</a>
-      </li>
-      <li class="page-item disabled" th:unless="${contractList.hasNext()}">
-        <a class="page-link">&raquo;</a>
-      </li>
-    </ul>
-  </nav>
+    <nav aria-label="..." class="justify-content-center d-flex">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/contract/(page=${contractList.number - 1})}"
+                   th:if="${contractList.hasPrevious()}">&laquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${contractList.hasPrevious()}">
+                <a class="page-link">&laquo;</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{/contract/(page=${contractList.number - 1})}"
+                   th:if="${contractList.hasPrevious()}" th:text="${contractList.number}"></a>
+            </li>
+            <li class="page-item active">
+                <a class="page-link" th:href="@{/contract/(page=${contractList.number})}"
+                   th:text="${contractList.number + 1}">
+                    <span class="sr-only">(trang hiện tại)</span></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{/contract/(page=${contractList.number+1})}"
+                   th:text="${contractList.number+2}"
+                   th:if="${contractList.hasNext()}"></a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" th:href="@{/contract/(page=${contractList.number+1})}"
+                   th:if="${contractList.hasNext()}">&raquo;</a>
+            </li>
+            <li class="page-item disabled" th:unless="${contractList.hasNext()}">
+                <a class="page-link">&raquo;</a>
+            </li>
+        </ul>
+    </nav>
 </div>
 
 
@@ -228,10 +211,48 @@
 </script>
 
 <SCRIPT>
-  function contract(id){
-    document.getElementById("contractID").value = id;
-  }
+    function contract(id) {
+        document.getElementById("contractID").value = id;
+    }
 </SCRIPT>
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+        crossorigin="anonymous"></script>
+
+<script>
+    function search(id) {
+        $.ajax({
+            type: "GET",
+            url: "/contracts/attach-facility/" + id,
+            success: function (data) {
+                let a = 0;
+                //data => đang ở dạng json
+                let table = '';// lưu trữ table
+                for (let i = 0; i < data.length; i++) {
+                    a += data[i].total;
+                    table +=
+                        `
+                        <tr>
+                            <th scope="row">${i + 1}</th>
+                            <td>${data[i].name}</td>
+                            <td>${data[i].cost}</td>
+                            <td>${data[i].totalQuantity}</td>
+                            <td>${data[i].unit}</td>
+                            <td>${data[i].status}</td>
+                            <td>${data[i].total}</td>
+                        </tr>
+                        `
+                }
+                table +=
+                    `
+                    <th colspan="6">Tổng tiền</th>
+                    <td>${a}</td>
+                `
+                $('#my-body').html(table)
+            }
+        });
+    }
+</script>
+
 
 </body>
 </html>

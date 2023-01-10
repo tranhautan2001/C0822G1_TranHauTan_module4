@@ -63,6 +63,9 @@
   </div>
 </nav>
 <div class="row"></div>
+
+<!--table showList-->
+
 <table class="table table-striped table-bordered" id="tableCustomer">
   <thead>
   <tr>
@@ -107,8 +110,9 @@
   <div style="margin-left: 700px">
     <a class="btn btn-primary" style="padding: 15px; width: 200px" th:href="@{facility/create}">ADD FACILITY</a>
   </div>
-
 </table>
+
+<!--modal xóa-->
 
 <div class="modal" tabindex="-1" id="deleteModal">
   <div class="modal-dialog">
@@ -129,10 +133,12 @@
           <button type="submit" class="btn btn-primary">Xóa</button>
         </div>
       </form>
-
     </div>
   </div>
 </div>
+
+<!--nút phân trang-->
+
 <div>
   <nav aria-label="..." class="justify-content-center d-flex">
     <ul class="pagination">
@@ -143,23 +149,19 @@
       <li class="page-item disabled" th:unless="${facilityList.hasPrevious()}">
         <a class="page-link">&laquo;</a>
       </li>
-
       <li class="page-item">
         <a class="page-link" th:href="@{/facility/(page=${facilityList.number - 1})}"
            th:if="${facilityList.hasPrevious()}" th:text="${facilityList.number}"></a>
       </li>
-
       <li class="page-item active">
         <a class="page-link" th:href="@{/facility/(page=${facilityList.number})}"
            th:text="${facilityList.number + 1}">
           <span class="sr-only">(trang hiện tại)</span></a>
       </li>
-
       <li class="page-item">
         <a class="page-link" th:href="@{/facility/(page=${facilityList.number+1})}" th:text="${facilityList.number+2}"
            th:if="${facilityList.hasNext()}"></a>
       </li>
-
       <li class="page-item">
         <a class="page-link" th:href="@{/facility/(page=${facilityList.number+1})}"
            th:if="${facilityList.hasNext()}">&raquo;</a>
@@ -170,6 +172,7 @@
     </ul>
   </nav>
 </div>
+
 
 <script>
   function deleteFacility(id,name) {
@@ -182,6 +185,5 @@
 <script src="datatables/js/dataTables.bootstrap5.min.js"></script>
 <script>
 </script>
-
 </body>
 </html>

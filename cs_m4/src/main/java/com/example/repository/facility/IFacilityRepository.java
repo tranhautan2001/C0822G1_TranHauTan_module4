@@ -14,4 +14,6 @@ public interface IFacilityRepository extends JpaRepository<Facility ,Integer> {
     Page<Facility> searchFacility(@Param("name") String name, @Param("facilityTypeId") Integer facilityTypeId, Pageable pageable);
 
 
+    @Query(value = "select * from `facility` where flag_delete = false " , nativeQuery = true)
+    Page<Facility> showList(Pageable pageable);
 }

@@ -65,11 +65,9 @@
           <div class="card-body p-4 p-md-5">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">CHỈNH SỬA DỊCH VỤ</h3>
             <form th:action="@{/facility/edit}" method="post" th:object="${facilityUpdate}">
-
               <div th:if="${facilityType == 1 || facilityType == 2 || facilityType == 3}" class="form-outline">
                 <input type="hidden" th:field="*{id}" class="form-control form-control-lg"/>
               </div>
-
               <div class="form-outline">
                 <label th:for="facilityType" class="form-label fs-6">Loại Dịch Vụ</label>
                 <select th:field="*{facilityType}" class="select form-control-lg">
@@ -77,8 +75,6 @@
                           th:text="${facilityType.name}" th:selected="${facilityType.id == facilityType}"></option>
                 </select>
               </div>
-
-
               <div th:if="${facilityType == 1 || facilityType == 2 || facilityType == 3}" class="form-outline">
                 <label class="form-label" th:for="name">Tên dịch vụ</label>
                 <input type="text" th:field="*{name}" class="form-control form-control-lg"/>
@@ -88,20 +84,14 @@
                 <label class="form-label" th:for="area">Diện Tích</label>
                 <input type="text" th:field="*{area}" class="form-control form-control-lg"/>
               </div>
-
-
               <div th:if="${facilityType == 1 || facilityType == 2 || facilityType == 3}" class="form-outline datepicker w-100">
                 <label th:for="cost" class="form-label">Chi Phí Thuê</label>
                 <input type="text" th:field="*{cost}" class="form-control form-control-lg"/>
               </div>
-
-
               <div th:if="${facilityType == 1 || facilityType == 2 || facilityType == 3}" class="form-outline datepicker w-100">
                 <label th:for="maxPeople" class="form-label">Số Người Tối Đa</label>
                 <input type="text" th:field="*{maxPeople}" class="form-control form-control-lg"/>
               </div>
-
-
               <div th:if="${facilityType == 1 || facilityType == 2 || facilityType == 3}" class="form-outline mt-3 mb-3">
                 <label th:for="rentType" class="form-label fs-6">Kiểu Thuê</label>
                 <select th:field="*{rentType}" class="select form-control-lg">
@@ -109,40 +99,28 @@
                           th:text="${rentType.name}"></option>
                 </select>
               </div>
-
               <div th:if="${facilityType == 1 || facilityType == 2}" class="form-outline">
-
                 <label th:for="standardRoom" class="form-label">Tiêu Chuẩn Phòng</label>
                 <input type="text" th:field="*{standardRoom}" class="form-control form-control-lg"/>
               </div>
-
-
               <div th:if="${facilityType == 1 || facilityType == 2}" class="form-outline">
                 <label th:for="descriptionOtherConvenience" class="form-label">Mô Tả Tiện Nghi
                   Khác</label>
                 <input type="text" th:field="*{descriptionOtherConvenience}"
                        class="form-control form-control-lg"/>
               </div>
-
-
               <div th:if="${facilityType == 1}" class="form-outline">
                 <label th:for="poolArea" class="form-label">Diện Tích Hồ Bơi</label>
                 <input type="text" th:field="*{poolArea}" class="form-control form-control-lg"/>
               </div>
-
-
               <div th:if="${facilityType == 1 || facilityType == 2}" class="form-outline">
                 <label th:for="numbersOfFloors" class="form-label">Số Tầng</label>
                 <input type="text" th:field="*{numberOfFloors}" class="form-control form-control-lg"/>
               </div>
-
-
               <div th:if="${facilityType == 3}" class="form-outline">
                 <label th:for="facilityFree" class="form-label">Dịch Vụ Miễn Phí Đi Kèm</label>
                 <input type="text" th:field="*{facilityFree}" class="form-control form-control-lg"/>
               </div>
-
-
               <div class="mt-4 pt-2">
                 <button class="btn btn-primary btn-lg" type="submit">Lưu</button>
               </div>

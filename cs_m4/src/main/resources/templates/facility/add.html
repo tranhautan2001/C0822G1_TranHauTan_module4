@@ -57,6 +57,9 @@
         </div>
     </div>
 </nav>
+
+<!--form thêm mới-->
+
 <section class="gradient-custom">
     <div class="container py-5 h-100">
         <div class="row justify-content-center align-items-center h-100">
@@ -73,33 +76,23 @@
                                             th:text="${facilityType.name}"></option>
                                 </select>
                             </div>
-
-
                             <div class="form-outline">
                                 <label class="form-label" th:for="name">Tên dịch vụ</label>
                                 <input type="text" th:field="*{name}" class="form-control form-control-lg"/>
                                 <p th:errors="*{name}" class="text-danger" ></p>
                             </div>
-
-
                             <div class="form-outline">
                                 <label class="form-label" th:for="area">Diện Tích</label>
                                 <input type="text" th:field="*{area}" class="form-control form-control-lg"/>
                             </div>
-
-
                             <div class="form-outline datepicker w-100">
                                 <label th:for="cost" class="form-label">Chi Phí Thuê</label>
                                 <input type="text" th:field="*{cost}" class="form-control form-control-lg"/>
                             </div>
-
-
                             <div class="form-outline datepicker w-100">
                                 <label th:for="maxPeople" class="form-label">Số Người Tối Đa</label>
                                 <input type="text" th:field="*{maxPeople}" class="form-control form-control-lg"/>
                             </div>
-
-
                             <div class="form-outline mt-3 mb-3">
                                 <label th:for="rentType" class="form-label fs-6">Kiểu Thuê</label>
                                 <select th:field="*{rentType}" class="select form-control-lg">
@@ -107,42 +100,32 @@
                                             th:text="${rentType.name}"></option>
                                 </select>
                             </div>
-
-
                             <div id="standardRoom" class="form-outline">
                                 <label th:for="standardRoom" class="form-label">Tiêu Chuẩn Phòng</label>
                                 <input type="text" th:field="*{standardRoom}" class="form-control form-control-lg"/>
                                 <p th:errors="*{standardRoom}" class="text-danger" ></p>
                             </div>
-
-
                             <div id="descriptionOtherConvenience" class="form-outline">
                                 <label th:for="descriptionOtherConvenience" class="form-label">Mô Tả Tiện Nghi
                                     Khác</label>
                                 <input type="text" th:field="*{descriptionOtherConvenience}"
                                        class="form-control form-control-lg"/>
                             </div>
-
-
                             <div id="poolArea" class="form-outline">
                                 <label th:for="poolArea" class="form-label">Diện Tích Hồ Bơi</label>
                                 <input type="text" th:field="*{poolArea}" class="form-control form-control-lg"/>
                                 <p th:errors="*{poolArea}" class="text-danger" ></p>
                             </div>
-
                             <div id="numbersOfFloors" class="form-outline">
                                 <label th:for="numbersOfFloors" class="form-label">Số Tầng</label>
                                 <input type="text" th:field="*{numberOfFloors}" class="form-control form-control-lg"/>
                                 <p th:errors="*{numberOfFloors}" class="text-danger" ></p>
                             </div>
-
                             <div style="display: none" id="facilityFree" class="form-outline">
                                 <label th:for="facilityFree" class="form-label">Dịch Vụ Miễn Phí Đi Kèm</label>
                                 <input type="text" th:field="*{facilityFree}" class="form-control form-control-lg"/>
                                 <p th:errors="*{facilityFree}" class="text-danger" ></p>
                             </div>
-
-
                             <div class="mt-4 pt-2">
                                 <button class="btn btn-primary btn-lg" type="submit">Lưu</button>
                             </div>
@@ -153,7 +136,12 @@
         </div>
     </div>
 </section>
+
+
 <script src="../../bootstrap-5.1.3-dist/js/bootstrap.js"></script>
+
+<!--giá trị các thẻ trong form-->
+
 <script>
     function showValue() {
         var ele = facilityType.value;

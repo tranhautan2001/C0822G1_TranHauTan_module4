@@ -17,7 +17,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public Page<Facility> finAll(Pageable pageable) {
-        return facilityRepository.findAll(pageable);
+        return facilityRepository.showList(pageable);
     }
 
     @Override
@@ -33,7 +33,9 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public void delete(int id) {
-      facilityRepository.deleteById(id);
+        Facility facility = findById(id);
+        facility.setFlagDelete(true);
+      facilityRepository.save(facility);
     }
 
     @Override
