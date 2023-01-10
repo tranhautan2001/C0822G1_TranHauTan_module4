@@ -20,18 +20,19 @@ public class CustomerDto implements Validator {
     @DateTimeFormat(pattern = "DD/MM/YYYY")
     private String dateOfBirth;
     private double gender;
+
     @NotBlank(message = "ID Card không được bỏ trống")
-    @Pattern(regexp = "^\\d{9}$",message = "nhập đúng định dạng cmnd")
-    @Column(unique = true)
+    @Pattern(regexp = "^\\d{9}|\\d{12}$",message = "nhập đúng định dạng cmnd")
     private String idCard;
+
     @NotBlank(message = "không được để trống số điện thoại")
-    @Pattern(regexp = "[0-9]{10}",message = "nhập đúng định dạng số điện thoại ")
-    @Column(unique = true)
+    @Pattern(regexp = "^090\\d{7}$|^091\\d{7}$|^8490\\d{7}$|^8491\\d{7}$",message = "nhập đúng định dạng số điện thoại ")
     private String phoneNumber;
+
     @NotBlank(message = "khồn đươc bỏ trống email")
     @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$",message = "yêu cầu nhập đúng định dạng email")
-    @Column(unique = true)
     private String email;
+
     @NotBlank(message = "không được bỏ trống address")
     private String address;
 

@@ -86,7 +86,7 @@ public class FacilityController {
     }
 
     @GetMapping("/search")
-    public String search(String name ,Integer FacilityTypeId, Model model,@PageableDefault( value = 5) Pageable pageable ){
+    public String search(@RequestParam(value = "name",defaultValue = "") String name ,@RequestParam(value = "name", defaultValue = "")  Integer FacilityTypeId, Model model,@PageableDefault( value = 5) Pageable pageable ){
         model.addAttribute("facilityList",facilityService.search(name,FacilityTypeId , pageable));
         model.addAttribute("facilityType",facilityTypeService.findAll());
         return "facility/list";

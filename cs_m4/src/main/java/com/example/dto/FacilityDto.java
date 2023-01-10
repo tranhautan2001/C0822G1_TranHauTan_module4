@@ -4,6 +4,8 @@ import com.example.model.facility.FacilityType;
 import com.example.model.facility.RentType;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -14,6 +16,8 @@ public class FacilityDto implements Validator {
     @Pattern(regexp = "^\\p{Lu}\\p{Ll}+(\\s\\p{Lu}\\p{Ll}+)*$", message = "tên phải đúng định dạng Chữ cái đầu viết hoa")
     private String name;
     private int area;
+
+@Min(value = 0,message = "giá phải là số nguyên dương")
     private double cost;
     private int maxPeople;
 
@@ -27,6 +31,7 @@ public class FacilityDto implements Validator {
     private String poolArea;
 
     @NotBlank(message = "số tâng không được để trống")
+    @Pattern(regexp = "^\\d+$",message = "nhập đúng định dạng số nguyên dương")
     private String numberOfFloors;
     private String facilityFree;
 
@@ -140,5 +145,7 @@ public class FacilityDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
      FacilityDto facilityDto = (FacilityDto) target;
+
     }
+
 }
