@@ -4,8 +4,6 @@ import com.example.model.customer.CustomerType;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -121,6 +119,5 @@ public class CustomerDto implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         CustomerDto customerDto = (CustomerDto) target;
-
     }
 }
